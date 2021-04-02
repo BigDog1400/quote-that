@@ -15,9 +15,6 @@ function ArtistResultItem({
   const { colorMode } = useColorMode();
   return (
     <Flex
-      _hover={{
-        cursor: "pointer"
-      }}
       height='80px'
       layerStyle={colorMode === "dark" ? "cardDarkMode" : "cardLightMode"}
       width='100%'
