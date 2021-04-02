@@ -5,16 +5,20 @@ import { statusType } from "../../types/statusRequestRedux";
 const HAPPY_API_KEY = process.env.NEXT_PUBLIC_HAPPI_DEV_API_KEY;
 // First, create the thunk
 
-export const fetchArtists = createAsyncThunk(
-  "artists/fetchArtists",
+export const fetchArtist = createAsyncThunk(
+  "artists/fetchArtist",
   async (search: string, { getState }) => {
-    const response = await axios.get(`https://api.happi.dev/v1/music`, {
-      params: {
-        q: search,
-        type: "artist",
-        apikey: HAPPY_API_KEY
+    const response = await axios.get(
+      `https://api.happi.dev/v1/music/artists/:id_artist`.replace(
+        ":id_artist",
+        search
+      ),
+      {
+        params: {
+          apikey: HAPPY_API_KEY
+        }
       }
-    });
+    );
     const {
       data: { result }
     } = await response;
@@ -22,43 +26,50 @@ export const fetchArtists = createAsyncThunk(
   }
 );
 
-type ArtistsState = {
-  data: Array<{
-    artist: string;
-    id_artist: number;
-    cover: string;
-    api_artist: string;
-  }>;
+type ArtistState = {
   status: statusType;
+  data?: {
+    id_artist: number;
+    artist: string;
+    mbid: string;
+    gender: "female" | "male";
+    country: string;
+    youtube: string;
+    instagram: string;
+    twitter: string;
+    facebook: string;
+    website: string;
+    spotify: string;
+    api_albums: string;
+  };
 };
 
-const initialState: ArtistsState = {
-  data: [],
+const initialState: ArtistState = {
   status: "idle"
 };
 
 // Then, handle actions in your reducers:
-const artistsSlice = createSlice({
-  name: "artists",
+const artistSlice = createSlice({
+  name: "artist",
   initialState,
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchArtists.pending, (state, action) => {
+    builder.addCase(fetchArtist.pending, (state, action) => {
       state.status = "loading";
     });
-    builder.addCase(fetchArtists.fulfilled, (state, action) => {
+    builder.addCase(fetchArtist.fulfilled, (state, action) => {
       state.status = "succeeded";
       state.data = action.payload;
     });
   }
 });
 
-export const {} = artistsSlice.actions;
+export const {} = artistSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const resultArtists = (state: RootState) => state.artists.data;
-export const statusSearchArtists = (state: RootState) => state.artists.status;
+export const resultArtist = (state: RootState) => state.artist.data;
+export const statusSearchArtist = (state: RootState) => state.artist.status;
 
-export default artistsSlice.reducer;
+export default artistSlice.reducer;
