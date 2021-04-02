@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./lib/slices/counterSlice";
-import artistsReducer from "./lib/slices/artistSlice";
+import artistsReducer from "./lib/slices/artistsSlice";
+import artistReducer from "./lib/slices/artistSlice";
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    // comments: commentsReducer,
-    artists: artistsReducer
+    artists: artistsReducer,
+    artist: artistReducer
   }
 });
 
