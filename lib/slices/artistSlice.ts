@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice, Draft } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 import axios from "axios";
-import { STATUS } from "../../types/statusRequestRedux";
+import { statusType } from "../../types/statusRequestRedux";
 const HAPPY_API_KEY = process.env.NEXT_PUBLIC_HAPPI_DEV_API_KEY;
 // First, create the thunk
 
 export const fetchArtists = createAsyncThunk(
   "artists/fetchArtists",
-  async (search: string) => {
+  async (search: string, { getState }) => {
     const response = await axios.get(`https://api.happi.dev/v1/music`, {
       params: {
         q: search,
@@ -29,12 +29,12 @@ type ArtistsState = {
     cover: string;
     api_artist: string;
   }>;
-  status: STATUS;
+  status: statusType;
 };
 
 const initialState: ArtistsState = {
   data: [],
-  status: STATUS.idle
+  status: "idle"
 };
 
 // Then, handle actions in your reducers:
@@ -46,11 +46,11 @@ const artistsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchArtists.pending, (state, action) => {
-      state.status = STATUS.loading;
+      state.status = "loading";
     });
     builder.addCase(fetchArtists.fulfilled, (state, action) => {
-      state.status = STATUS.succeeded;
-      state.data.push(action.payload);
+      state.status = "succeeded";
+      state.data = action.payload;
     });
   }
 });
@@ -58,6 +58,7 @@ const artistsSlice = createSlice({
 export const {} = artistsSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectArtists = (state: RootState) => state.artists.data;
+export const resultArtists = (state: RootState) => state.artists.data;
+export const statusSearchArtists = (state: RootState) => state.artists.status;
 
 export default artistsSlice.reducer;
