@@ -4,7 +4,7 @@ import { useAppSelector } from "../../lib/reduxHooks";
 import {
   resultArtists,
   statusSearchArtists
-} from "../../lib/slices/artistSlice";
+} from "../../lib/slices/artistsSlice";
 import ArtistResultItem from "../elements/ArtistResultItem";
 import LoadingSpinner from "../elements/LoadingSpinner";
 
