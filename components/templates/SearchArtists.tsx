@@ -1,16 +1,13 @@
-import { Center, Stack, VStack } from "@chakra-ui/layout";
+import { Center, VStack } from "@chakra-ui/layout";
 import React from "react";
 import InputSearch from "../elements/InputSearch";
-import { fetchArtists, resultArtists } from "../../lib/slices/artistSlice";
-import { useAppSelector, useAppDispatch } from "../../lib/reduxHooks";
+import { fetchArtists } from "../../lib/slices/artistsSlice";
+import { useAppDispatch } from "../../lib/reduxHooks";
 import { debounce } from "debounce";
-import ArtistResultItem from "../elements/ArtistResultItem";
 import ArtistListResult from "../modules/ArtistListResult";
 
 export default function SearchArtists() {
-  const statusFetchArtists = useAppSelector(({ artists }) => artists.status);
   const dispatch = useAppDispatch();
-  const data = useAppSelector(resultArtists);
 
   const onChangeSearch = debounce((value) => {
     if (value === "") return;
