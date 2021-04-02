@@ -1,6 +1,1 @@
-export enum STATUS {
-  idle = "idle",
-  loading = "loading",
-  succeeded = "succeeded",
-  failed = "failed"
-}
+export type statusType = "idle" | "loading" | "succeeded" | "failed";
