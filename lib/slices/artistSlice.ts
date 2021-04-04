@@ -51,6 +51,7 @@ type ArtistState = {
     website: string;
     spotify: string;
     api_albums: string;
+    cover: string;
   };
 };
 
