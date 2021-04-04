@@ -25,7 +25,13 @@ export default function SearchArtists() {
       </Center>
 
       {/* SEARCH RESULTS COMPONENTS */}
-      <Center w='40%' p={4}>
+      <Center
+        w={{
+          base: "80%",
+          md: "40%"
+        }}
+        p={4}
+      >
         <ArtistListResult></ArtistListResult>
       </Center>
     </VStack>
