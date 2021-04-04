@@ -30,7 +30,7 @@ const theme = extendTheme({
       color: "gray.800",
       transition: "all 0.3s ease",
       _hover: {
-        bg: "blue.100",
+        bg: "gray.200",
         cursor: "pointer",
         transform: "scale(1.015)"
       }
