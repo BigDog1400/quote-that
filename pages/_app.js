@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import { store } from "../store";
-import theme from "./theme";
+import { theme } from "../theme";
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
