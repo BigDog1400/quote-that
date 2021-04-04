@@ -12,7 +12,7 @@ const config: ChakraConfig = {
 };
 
 // 3. extend the
-const theme = extendTheme({
+export const theme = extendTheme({
   config,
   layerStyles: {
     cardDarkMode: {
@@ -37,5 +37,3 @@ const theme = extendTheme({
     }
   }
 });
-
-export default theme;
