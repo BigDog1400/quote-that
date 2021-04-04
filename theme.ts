@@ -20,7 +20,7 @@ export const theme = extendTheme({
       color: "gray.50",
       transition: "all 0.3s ease",
       _hover: {
-        bg: "gray.400",
+        bg: "gray.700",
         cursor: "pointer",
         transform: "scale(1.015)"
       }
@@ -30,7 +30,7 @@ export const theme = extendTheme({
       color: "gray.800",
       transition: "all 0.3s ease",
       _hover: {
-        bg: "gray.200",
+        bg: "gray.100",
         cursor: "pointer",
         transform: "scale(1.015)"
       }
