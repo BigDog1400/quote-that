@@ -1,20 +1,25 @@
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Spacer } from "@chakra-ui/layout";
+import { useRouter } from "next/router";
 import React from "react";
 
 type ArtistResultItemProps = {
   artistName: string;
   profilePictureURL: string;
+  id_Artist: number;
 };
 
 function ArtistResultItem({
   artistName,
-  profilePictureURL
+  profilePictureURL,
+  id_Artist
 }: ArtistResultItemProps) {
   const { colorMode } = useColorMode();
+  const router = useRouter();
   return (
     <Flex
+      onClick={() => router.push(`artist/${id_Artist}`)}
       height='80px'
       layerStyle={colorMode === "dark" ? "cardDarkMode" : "cardLightMode"}
       width='100%'

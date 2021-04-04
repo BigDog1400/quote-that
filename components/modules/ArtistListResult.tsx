@@ -20,6 +20,7 @@ function ArtistListResult() {
       ) : artistList.length > 0 ? (
         artistList.map((artist) => (
           <ArtistResultItem
+            id_Artist={artist.id_artist}
             artistName={artist.artist}
             profilePictureURL={artist.cover}
           ></ArtistResultItem>
