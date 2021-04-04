@@ -20,9 +20,11 @@ export const fetchAlbums = createAsyncThunk(
       }
     );
     const {
-      data: { result }
+      data: {
+        result: { albums }
+      }
     } = await response;
-    return result;
+    return albums;
   }
 );
 
