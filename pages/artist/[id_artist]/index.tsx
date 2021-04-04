@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import CommonLayout from "../../components/layouts/common";
-import ArtistDetails from "../../components/templates/ArtistDetails";
+import CommonLayout from "../../../components/layouts/common";
+import ArtistDetails from "../../../components/templates/ArtistDetails";
 import { GetStaticProps, GetStaticPaths } from "next";
 
 function Artist({ id_artist }) {
