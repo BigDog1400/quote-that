@@ -3,6 +3,7 @@ import React from "react";
 import { useAppSelector } from "../../lib/reduxHooks";
 import { resultAlbums, statusSearchAlbums } from "../../lib/slices/albumsSlice";
 import AlbumResultItem from "../elements/AlbumResultItem";
+import AlbumResultItemSkeleton from "../elements/AlbumResultItemSkeleton";
 import LoadingSpinner from "../elements/LoadingSpinner";
 
 function AlbumListResult() {
@@ -11,9 +12,22 @@ function AlbumListResult() {
 
   return (
     <Flex wrap='wrap' justifyContent='center'>
-      {statusFetch === "loading" ? <LoadingSpinner /> : null}
+      {statusFetch === "loading"
+        ? Array(10)
+            .fill(null)
+            .map((e) => (
+              <Box
+                p={{
+                  base: 6,
+                  md: 3
+                }}
+              >
+                <AlbumResultItemSkeleton />
+              </Box>
+            ))
+        : null}
 
-      {albumsData?.length > 0
+      {statusFetch === "succeeded" && albumsData?.length > 0
         ? albumsData.map((album) => (
             <Box
               p={{
