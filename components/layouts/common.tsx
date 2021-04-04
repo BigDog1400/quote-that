@@ -16,22 +16,28 @@ import ToggleColorMode from "../elements/ToggleColorMode";
 import TopBar from "../modules/TopBar";
 
 type CommonLayoutProps = {
+  displayIlustration?: boolean;
   children: React.ReactNode;
 };
 
-export default function CommonLayout({ children }: CommonLayoutProps) {
+export default function CommonLayout({
+  children,
+  displayIlustration = true
+}: CommonLayoutProps) {
   return (
     <Container maxW='container.xl' display='flex' flexFlow='row'>
       <Flex w='100%' direction='column'>
         <TopBar></TopBar>
-        <Center marginBottom='5vh'>
-          <PlaylistIlustration
-            style={{
-              width: "250px",
-              height: "auto"
-            }}
-          />
-        </Center>
+        {displayIlustration ? (
+          <Center marginBottom='5vh'>
+            <PlaylistIlustration
+              style={{
+                width: "250px",
+                height: "auto"
+              }}
+            />
+          </Center>
+        ) : null}
         <Spacer />
         <Box flex={1}>{children}</Box>
       </Flex>
