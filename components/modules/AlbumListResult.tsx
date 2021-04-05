@@ -6,7 +6,11 @@ import AlbumResultItem from "../elements/AlbumResultItem";
 import AlbumResultItemSkeleton from "../elements/AlbumResultItemSkeleton";
 import LoadingSpinner from "../elements/LoadingSpinner";
 
-function AlbumListResult() {
+type AlbumListResultProps = {
+  idArtist: number;
+};
+
+function AlbumListResult({ idArtist }: AlbumListResultProps) {
   const albumsData = useAppSelector(resultAlbums);
   const statusFetch = useAppSelector(statusSearchAlbums);
 
@@ -36,6 +40,8 @@ function AlbumListResult() {
               }}
             >
               <AlbumResultItem
+                idAlbum={String(album.id_album)}
+                idArtist={String(idArtist)}
                 coverAlbumUrl={album.cover}
                 nameAlbum={album.album}
               ></AlbumResultItem>

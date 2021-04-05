@@ -32,7 +32,7 @@ function ArtistDetails({ idArtist }: ArtistDetailsProps) {
         }
       />
       <Flex wrap='wrap' justifyContent='center'>
-        <AlbumListResult />
+        <AlbumListResult idArtist={idArtist} />
       </Flex>
     </VStack>
   );
