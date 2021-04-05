@@ -1,10 +1,13 @@
 import { Box, Flex } from "@chakra-ui/layout";
-import React from "react";
-import { useAppSelector } from "../../lib/reduxHooks";
-import { resultAlbums, statusSearchAlbums } from "../../lib/slices/albumsSlice";
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../lib/reduxHooks";
+import {
+  fetchAlbums,
+  resultAlbums,
+  statusSearchAlbums
+} from "../../lib/slices/albumsSlice";
 import AlbumResultItem from "../elements/AlbumResultItem";
 import AlbumResultItemSkeleton from "../elements/AlbumResultItemSkeleton";
-import LoadingSpinner from "../elements/LoadingSpinner";
 
 type AlbumListResultProps = {
   idArtist: string;
@@ -13,6 +16,10 @@ type AlbumListResultProps = {
 function AlbumListResult({ idArtist }: AlbumListResultProps) {
   const albumsData = useAppSelector(resultAlbums);
   const statusFetch = useAppSelector(statusSearchAlbums);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchAlbums(idArtist));
+  }, [idArtist]);
 
   return (
     <Flex wrap='wrap' justifyContent='center'>
