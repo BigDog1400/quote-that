@@ -18,21 +18,21 @@ export const theme = extendTheme({
     cardDarkMode: {
       bg: "gray.600",
       color: "gray.50",
-      transition: "all 0.3s ease",
+      transition: "all .15s ease-in-out",
       _hover: {
         bg: "gray.700",
         cursor: "pointer",
-        transform: "scale(1.015)"
+        transform: "scale(1.010)"
       }
     },
     cardLightMode: {
       bg: "gray.50",
       color: "gray.800",
-      transition: "all 0.3s ease",
+      transition: "all .15s ease-in-out",
       _hover: {
         bg: "gray.100",
         cursor: "pointer",
-        transform: "scale(1.015)"
+        transform: "scale(1.010)"
       }
     }
   }
