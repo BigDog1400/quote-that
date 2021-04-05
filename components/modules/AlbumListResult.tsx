@@ -7,7 +7,7 @@ import AlbumResultItemSkeleton from "../elements/AlbumResultItemSkeleton";
 import LoadingSpinner from "../elements/LoadingSpinner";
 
 type AlbumListResultProps = {
-  idArtist: number;
+  idArtist: string;
 };
 
 function AlbumListResult({ idArtist }: AlbumListResultProps) {
