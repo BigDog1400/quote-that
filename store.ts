@@ -3,12 +3,16 @@ import counterReducer from "./lib/slices/counterSlice";
 import artistsReducer from "./lib/slices/artistsSlice";
 import artistReducer from "./lib/slices/artistSlice";
 import albumsReducer from "./lib/slices/albumsSlice";
+import tracksReducer from "./lib/slices/tracksSlice";
+import albumSlice from "./lib/slices/albumSlice";
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     artists: artistsReducer,
     artist: artistReducer,
-    albums: albumsReducer
+    albums: albumsReducer,
+    tracks: tracksReducer,
+    album: albumSlice
   }
 });
 
