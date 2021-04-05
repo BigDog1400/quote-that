@@ -16,7 +16,7 @@ export default function SearchArtists() {
   return (
     <VStack spacing='3rem'>
       {/* SEARCH INPUT COMPONENT */}
-      <Center width={"50%"}>
+      <Center width={{ base: "80%", md: "50%" }}>
         <InputSearch
           placeholder='Bad bunny, Dua Lipa, Billie Eilish...'
           labelText='Busca tu artista favorito'
