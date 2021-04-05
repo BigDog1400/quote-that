@@ -1,5 +1,5 @@
 import { useColorMode } from "@chakra-ui/color-mode";
-import { VStack } from "@chakra-ui/layout";
+import { Box, VStack } from "@chakra-ui/layout";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../lib/reduxHooks";
 import {
@@ -7,6 +7,7 @@ import {
   resultTracks,
   statusSearchTracks
 } from "../../lib/slices/tracksSlice";
+import TrackListSkeleton from "../elements/TrackListSkeleton";
 import TrackResultItem from "../elements/TrackResultItem";
 type AlbumTrackListResultProps = {
   idArtist: number;
@@ -31,7 +32,21 @@ function AlbumTrackListResult({
   const { colorMode } = useColorMode();
   return (
     <>
-      {fetchStatus === "loading" ? <span>Cargando</span> : null}
+      {fetchStatus === "loading" ? (
+        <VStack
+          w={{
+            base: "90%",
+            md: "60%"
+          }}
+          spacing='1rem'
+        >
+          {Array(10)
+            .fill(null)
+            .map((e) => (
+              <TrackListSkeleton />
+            ))}
+        </VStack>
+      ) : null}
 
       {fetchStatus === "succeeded" && albumTracksResult?.tracks.length > 0 ? (
         <VStack
