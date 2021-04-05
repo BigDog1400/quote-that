@@ -14,7 +14,7 @@ function AlbumTracks({ idArtist, idAlbum }: AlbumTracksProps) {
   return (
     <>
       <AlbumDetailsResult idAlbum={idAlbum} idArtist={idArtist} />
-      <Center>
+      <Center mt={4}>
         <AlbumTrackListResult idAlbum={idAlbum} idArtist={idArtist} />
       </Center>
     </>
