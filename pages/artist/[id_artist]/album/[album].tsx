@@ -6,7 +6,7 @@ import AlbumTracks from "../../../../components/templates/AlbumTracks";
 function Album({ id_artist, album }) {
   return (
     <CommonLayout displayIlustration={false}>
-      <AlbumTracks idArtist={String(id_artist)} idAlbum={album} />
+      <AlbumTracks idArtist={id_artist} idAlbum={album} />
     </CommonLayout>
   );
 }
