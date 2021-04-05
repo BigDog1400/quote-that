@@ -23,7 +23,6 @@ function ArtistResultItem({
       height='80px'
       layerStyle={colorMode === "dark" ? "cardDarkMode" : "cardLightMode"}
       width='100%'
-      borderRadius='md'
       p={5}
       alignItems='center'
     >
