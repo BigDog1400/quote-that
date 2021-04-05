@@ -2,6 +2,7 @@ import { Image } from "@chakra-ui/image";
 import { Box, Center, Flex, Heading, Text } from "@chakra-ui/layout";
 import React from "react";
 import AlbumDetails from "../elements/AlbumDetails";
+import AlbumDetailsResult from "../modules/AlbumDetailsResult";
 import AlbumTrackListResult from "../modules/AlbumTrackListResult";
 
 type AlbumTracksProps = {
@@ -12,7 +13,7 @@ type AlbumTracksProps = {
 function AlbumTracks({ idArtist, idAlbum }: AlbumTracksProps) {
   return (
     <>
-      <AlbumDetails idAlbum={String(idAlbum)} idArtist={String(idArtist)} />
+      <AlbumDetailsResult idAlbum={idAlbum} idArtist={idArtist} />
       <Center>
         <AlbumTrackListResult idAlbum={idAlbum} idArtist={idArtist} />
       </Center>
