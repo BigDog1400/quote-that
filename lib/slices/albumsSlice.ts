@@ -30,15 +30,13 @@ export const fetchAlbums = createAsyncThunk(
 
 type AlbumsState = {
   status: statusType;
-  data?: [
-    {
-      album: string;
-      id_album: number;
-      cover: string;
-      api_album: string;
-      api_tracks: string;
-    }
-  ];
+  data?: {
+    album: string;
+    id_album: number;
+    cover: string;
+    api_album: string;
+    api_tracks: string;
+  }[];
 };
 
 const initialState: AlbumsState = {
