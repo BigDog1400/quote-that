@@ -21,7 +21,7 @@ function AvatarWithName({ name, urlAvatar }: AvatarWithNameProps) {
           src={urlAvatar}
         />
       </Box>
-      <Heading as='h3'>{name}</Heading>
+      <Heading marginTop='1rem !important'>{name}</Heading>
     </VStack>
   );
 }
