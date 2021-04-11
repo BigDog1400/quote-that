@@ -55,7 +55,7 @@ function TrackDetails({
             fontStyle: "italic",
             cursor: "pointer"
           }}
-          onClick={() => push("/artist/" + id_artist + "/album" + id_album)}
+          onClick={() => push("/artist/" + id_artist + "/album/" + id_album)}
           fontSize='xl'
         >
           Album {albumName}
