@@ -2,6 +2,7 @@ import { Avatar } from "@chakra-ui/avatar";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Image } from "@chakra-ui/image";
 import { Box, Heading, HStack, Stack, Text } from "@chakra-ui/layout";
+import { Router, useRouter } from "next/router";
 import React from "react";
 
 type TrackDetailsProps = {
@@ -18,6 +19,8 @@ function TrackDetails({
   artistName
 }: TrackDetailsProps) {
   const { colorMode } = useColorMode();
+  const { query, push } = useRouter();
+  const { id_album, id_artist } = query;
   console.log(coverURL);
   return (
     <Stack justifyContent='center' wrap='wrap' direction='row' spacing='1rem'>
@@ -34,10 +37,29 @@ function TrackDetails({
         <Heading marginTop='4' fontSize='xxx-large'>
           {trackName}
         </Heading>
-        <Text as='h3' fontSize='2xl'>
+        <Text
+          _hover={{
+            textDecoration: "underline",
+            fontStyle: "italic",
+            cursor: "pointer"
+          }}
+          onClick={() => push("/artist/" + id_artist)}
+          as='h3'
+          fontSize='2xl'
+        >
           {artistName}
         </Text>
-        <Text fontSize='xl'>Album {albumName}</Text>
+        <Text
+          _hover={{
+            textDecoration: "underline",
+            fontStyle: "italic",
+            cursor: "pointer"
+          }}
+          onClick={() => push("/artist/" + id_artist + "/album" + id_album)}
+          fontSize='xl'
+        >
+          Album {albumName}
+        </Text>
       </Stack>
     </Stack>
   );
