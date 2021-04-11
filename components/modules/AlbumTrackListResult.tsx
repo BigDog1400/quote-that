@@ -58,6 +58,7 @@ function AlbumTrackListResult({
         >
           {albumTracksResult?.tracks.map((track, index) => (
             <TrackResultItem
+              idTrack={track.id_track}
               key={index}
               trackNumber={index + 1}
               trackName={track.track}
