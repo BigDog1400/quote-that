@@ -19,48 +19,50 @@ function TrackResultItem({
   idTrack,
   colorMode = "dark"
 }: TrackResultItemProps) {
-  const { asPath } = useRouter();
+  const { asPath, push } = useRouter();
 
   return (
-    <Link href={`${asPath}/track/${idTrack}`}>
-      <HStack
-        paddingRight='1rem'
-        minHeight='60px'
-        w='100%'
-        layerStyle={colorMode === "dark" ? "cardDarkMode" : "cardLightMode"}
-        spacing='1rem'
-      >
-        <Square size='60px' bg='white' color='black'>
-          <Text fontSize='2xl'>{trackNumber}</Text>
-        </Square>
-        <Text mr='auto' fontSize='lg' isTruncated>
-          {trackName}
-        </Text>
+    <HStack
+      paddingRight='1rem'
+      minHeight='60px'
+      w='100%'
+      onClick={() => {
+        if (!lyrics) return;
+        push(`${asPath}/track/${idTrack}`);
+      }}
+      layerStyle={colorMode === "dark" ? "cardDarkMode" : "cardLightMode"}
+      spacing='1rem'
+    >
+      <Square size='60px' bg='white' color='black'>
+        <Text fontSize='2xl'>{trackNumber}</Text>
+      </Square>
+      <Text mr='auto' fontSize='lg' isTruncated>
+        {trackName}
+      </Text>
 
-        <HStack>
-          {lang && lang !== "??" ? (
-            <Badge p='1' colorScheme='blue' variant='solid'>
-              {lang}
-            </Badge>
-          ) : (
-            <div></div>
-          )}
-          {bpm !== 0 ? (
-            <Tooltip label='It indicates the number of beats in one minute.'>
-              <Badge p='1' colorScheme='blue' variant='solid'>
-                {bpm} BPM
-              </Badge>
-            </Tooltip>
-          ) : (
-            <div></div>
-          )}
-
-          <Badge p='1' colorScheme={lyrics ? "blue" : "gray"} variant='solid'>
-            LYRICS
+      <HStack>
+        {lang && lang !== "??" ? (
+          <Badge p='1' colorScheme='blue' variant='solid'>
+            {lang}
           </Badge>
-        </HStack>
+        ) : (
+          <div></div>
+        )}
+        {bpm !== 0 ? (
+          <Tooltip label='It indicates the number of beats in one minute.'>
+            <Badge p='1' colorScheme='blue' variant='solid'>
+              {bpm} BPM
+            </Badge>
+          </Tooltip>
+        ) : (
+          <div></div>
+        )}
+
+        <Badge p='1' colorScheme={lyrics ? "blue" : "gray"} variant='solid'>
+          LYRICS
+        </Badge>
       </HStack>
-    </Link>
+    </HStack>
   );
 }
 
