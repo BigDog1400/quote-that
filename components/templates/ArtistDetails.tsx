@@ -9,7 +9,7 @@ type ArtistDetailsProps = {
 
 function ArtistDetails({ idArtist }: ArtistDetailsProps) {
   return (
-    <VStack spacing='1.4rem' paddingBottom='2rem' marginTop='1.5rem'>
+    <VStack spacing='2rem' marginTop='2rem' marginBottom='4rem'>
       <ArtistAvatar idArtist={idArtist} />
       <Flex wrap='wrap' justifyContent='center'>
         <AlbumListResult idArtist={idArtist} />

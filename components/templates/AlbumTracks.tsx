@@ -12,7 +12,7 @@ type AlbumTracksProps = {
 
 function AlbumTracks({ idArtist, idAlbum }: AlbumTracksProps) {
   return (
-    <Stack spacing='3rem' marginTop='2rem' marginBottom='4rem'>
+    <Stack spacing='2rem' marginTop='2rem' marginBottom='4rem'>
       <AlbumDetailsResult idAlbum={idAlbum} idArtist={idArtist} />
       <Center mt={4}>
         <AlbumTrackListResult idAlbum={idAlbum} idArtist={idArtist} />
