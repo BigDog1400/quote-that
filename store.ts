@@ -5,6 +5,7 @@ import artistReducer from "./lib/slices/artistSlice";
 import albumsReducer from "./lib/slices/albumsSlice";
 import tracksReducer from "./lib/slices/tracksSlice";
 import albumSlice from "./lib/slices/albumSlice";
+import trackSlice from "./lib/slices/trackSlice";
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
@@ -12,7 +13,8 @@ export const store = configureStore({
     artist: artistReducer,
     albums: albumsReducer,
     tracks: tracksReducer,
-    album: albumSlice
+    album: albumSlice,
+    track: trackSlice
   }
 });
 
