@@ -3,4 +3,5 @@ export type trackType = {
   lang: string;
   lyrics: boolean;
   bpm: number;
+  idTrack: number;
 };
