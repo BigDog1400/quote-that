@@ -1,23 +1,24 @@
 import React from "react";
-import CommonLayout from "../../../../components/layouts/common";
+import CommonLayout from "../../../../../../components/layouts/common";
 import { GetStaticProps, GetStaticPaths } from "next";
-import AlbumTracks from "../../../../components/templates/AlbumTracks";
+import Track from "../../../../../../components/templates/Track";
 
-function Album({ id_artist, album }) {
+function Album({ id_artist, id_album, id_track }) {
   return (
     <CommonLayout displayIlustration={false}>
-      <AlbumTracks idArtist={id_artist} idAlbum={album} />
+      <Track idAlbum={id_album} idTrack={id_track} idArtist={id_artist} />
     </CommonLayout>
   );
 }
 export const getStaticProps: GetStaticProps = async (context) => {
   const {
-    params: { id_artist, album }
+    params: { id_artist, id_album, id_track }
   } = context;
   return {
     props: {
       id_artist: id_artist,
-      album: album
+      id_album: id_album,
+      id_track: id_track
     } // will be passed to the page component as props
   };
 };
