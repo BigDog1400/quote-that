@@ -5,7 +5,7 @@ import Track from "../../../../../../components/templates/Track";
 
 function Album({ id_artist, id_album, id_track }) {
   return (
-    <CommonLayout displayIlustration={false}>
+    <CommonLayout title={"Quote That - Track"} displayIlustration={false}>
       <Track idAlbum={id_album} idTrack={id_track} idArtist={id_artist} />
     </CommonLayout>
   );

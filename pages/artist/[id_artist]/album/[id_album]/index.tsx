@@ -5,7 +5,7 @@ import AlbumTracks from "../../../../../components/templates/AlbumTracks";
 
 function Album({ id_artist, id_album }) {
   return (
-    <CommonLayout displayIlustration={false}>
+    <CommonLayout title={"Quote That - Albums"} displayIlustration={false}>
       <AlbumTracks idArtist={id_artist} idAlbum={id_album} />
     </CommonLayout>
   );

@@ -3,7 +3,7 @@ import SearchArtists from "../components/templates/SearchArtists";
 
 function Home() {
   return (
-    <CommonLayout>
+    <CommonLayout title={"Quote That"}>
       <SearchArtists></SearchArtists>
     </CommonLayout>
   );

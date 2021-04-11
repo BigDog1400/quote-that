@@ -13,34 +13,40 @@ import React from "react";
 import InputSearchTopBar from "../elements/InputSearchTopBar";
 import PlaylistIlustration from "../elements/PlaylistIlustration";
 import ToggleColorMode from "../elements/ToggleColorMode";
+import { Head } from "../global/CustomHead";
 import TopBar from "../modules/TopBar";
 
 type CommonLayoutProps = {
   displayIlustration?: boolean;
   children: React.ReactNode;
+  title: string;
 };
 
 export default function CommonLayout({
   children,
-  displayIlustration = true
+  displayIlustration = true,
+  title
 }: CommonLayoutProps) {
   return (
-    <Container maxW='container.xl' display='flex' flexFlow='row'>
-      <Flex w='100%' direction='column'>
-        <TopBar></TopBar>
-        {displayIlustration ? (
-          <Center marginBottom='5vh'>
-            <PlaylistIlustration
-              style={{
-                width: "250px",
-                height: "auto"
-              }}
-            />
-          </Center>
-        ) : null}
-        <Spacer />
-        <Box flex={1}>{children}</Box>
-      </Flex>
-    </Container>
+    <>
+      <Head title={title}></Head>
+      <Container maxW='container.xl' display='flex' flexFlow='row'>
+        <Flex w='100%' direction='column'>
+          <TopBar></TopBar>
+          {displayIlustration ? (
+            <Center marginBottom='5vh'>
+              <PlaylistIlustration
+                style={{
+                  width: "250px",
+                  height: "auto"
+                }}
+              />
+            </Center>
+          ) : null}
+          <Spacer />
+          <Box flex={1}>{children}</Box>
+        </Flex>
+      </Container>
+    </>
   );
 }

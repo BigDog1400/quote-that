@@ -6,7 +6,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 
 function Artist({ id_artist }) {
   return (
-    <CommonLayout displayIlustration={false}>
+    <CommonLayout title='Quote That' displayIlustration={false}>
       <ArtistDetails idArtist={String(id_artist)} />
     </CommonLayout>
   );

@@ -35,5 +35,10 @@ export const theme = extendTheme({
         transform: "scale(1.010)"
       }
     }
+  },
+  textStyles: {
+    logotipo: {
+      fontFamily: "Pacifico"
+    }
   }
 });
