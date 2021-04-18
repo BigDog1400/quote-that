@@ -1,10 +1,18 @@
-import { Badge, HStack, Spacer, Square, Text } from "@chakra-ui/layout";
+import { CheckIcon, NotAllowedIcon } from "@chakra-ui/icons";
+import {
+  Badge,
+  Box,
+  Center,
+  HStack,
+  Spacer,
+  Square,
+  Text
+} from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/tooltip";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { trackType } from "../../types/trackType";
-
+import { useMediaQuery } from "@chakra-ui/react";
 type TrackResultItemProps = {
   colorMode: "dark" | "light";
   trackNumber: number;
@@ -20,7 +28,7 @@ function TrackResultItem({
   colorMode = "dark"
 }: TrackResultItemProps) {
   const { asPath, push } = useRouter();
-
+  const [isLargerThan425] = useMediaQuery("(min-width: 425px)");
   return (
     <HStack
       paddingRight='1rem'
@@ -41,14 +49,14 @@ function TrackResultItem({
       </Text>
 
       <HStack>
-        {lang && lang !== "??" ? (
+        {isLargerThan425 && lang && lang !== "??" ? (
           <Badge p='1' colorScheme='blue' variant='solid'>
             {lang}
           </Badge>
         ) : (
           <div></div>
         )}
-        {bpm !== 0 ? (
+        {isLargerThan425 && bpm !== 0 ? (
           <Tooltip label='It indicates the number of beats in one minute.'>
             <Badge p='1' colorScheme='blue' variant='solid'>
               {bpm} BPM
@@ -58,8 +66,22 @@ function TrackResultItem({
           <div></div>
         )}
 
-        <Badge p='1' colorScheme={lyrics ? "blue" : "gray"} variant='solid'>
-          LYRICS
+        <Badge
+          p='1'
+          display='flex'
+          as='div'
+          alignItems='center'
+          colorScheme={lyrics ? "blue" : "gray"}
+          variant='solid'
+        >
+          <span>LYRICS</span>
+          <Center marginLeft='2'>
+            {lyrics ? (
+              <CheckIcon></CheckIcon>
+            ) : (
+              <NotAllowedIcon marginTop='2px'></NotAllowedIcon>
+            )}
+          </Center>
         </Badge>
       </HStack>
     </HStack>

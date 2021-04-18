@@ -15,9 +15,32 @@ function AlbumDetails({ cover, album, artist, realease }: AlbumsDetailsProps) {
   const router = useRouter();
   const { id_artist } = router.query;
   return (
-    <Flex spacing='4'>
-      <Image src={cover} height='200px'></Image>
-      <Box paddingLeft='2rem'>
+    <Flex
+      spacing='4'
+      wrap={{
+        base: "wrap",
+        md: "nowrap"
+      }}
+      justifyContent={{
+        base: "flex-start",
+        sm: "normal"
+      }}
+    >
+      <Image
+        margin={{
+          base: "0 auto",
+          sm: "0"
+        }}
+        src={cover}
+        height='200px'
+      ></Image>
+      <Box
+        paddingTop={{
+          base: "1rem",
+          sm: "0"
+        }}
+        paddingLeft={{ sm: "2rem" }}
+      >
         <Heading>{album}</Heading>
         <Text
           _hover={{
