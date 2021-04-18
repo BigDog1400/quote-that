@@ -34,7 +34,7 @@ export default function CommonLayout({
         <Flex w='100%' direction='column'>
           <TopBar></TopBar>
           {displayIlustration ? (
-            <Center marginBottom='5vh'>
+            <Center marginTop='5vh' marginBottom='5vh'>
               <PlaylistIlustration
                 style={{
                   width: "250px",

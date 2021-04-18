@@ -14,12 +14,11 @@ export default function SearchArtists() {
     dispatch(fetchArtists(value));
   }, 1000);
   return (
-    <VStack spacing='3rem'>
+    <VStack spacing='3rem' marginBottom='10'>
       {/* SEARCH INPUT COMPONENT */}
       <Center width={{ base: "80%", md: "50%" }}>
         <InputSearch
-          placeholder='Bad bunny, Dua Lipa, Billie Eilish...'
-          labelText='Busca tu artista favorito'
+          placeholder='Busca un cantante...'
           onChangeValue={(value) => onChangeSearch(value)}
         />
       </Center>
@@ -28,7 +27,7 @@ export default function SearchArtists() {
       <Center
         w={{
           base: "80%",
-          md: "40%"
+          md: "50%"
         }}
         p={4}
       >
