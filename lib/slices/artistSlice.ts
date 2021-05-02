@@ -16,15 +16,7 @@ export const fetchArtist = createAsyncThunk(
     { dispatch }
   ) => {
     const response = await axios.get(
-      `https://api.happi.dev/v1/music/artists/:id_artist`.replace(
-        ":id_artist",
-        args.search
-      ),
-      {
-        params: {
-          apikey: HAPPY_API_KEY
-        }
-      }
+      `/api/:id_artist`.replace(":id_artist", args.search)
     );
     const {
       data: { result }

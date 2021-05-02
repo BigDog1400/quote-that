@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 import axios from "axios";
 import { statusType } from "../../types/statusRequestRedux";
+
 const HAPPY_API_KEY = process.env.NEXT_PUBLIC_HAPPI_DEV_API_KEY;
 // First, create the thunk
 
@@ -9,14 +10,9 @@ export const fetchTracks = createAsyncThunk(
   "album/fetchTracks",
   async (args: { id_artist: string; id_album?: string }) => {
     const response = await axios.get(
-      `https://api.happi.dev/v1/music/artists/:id_artist/albums/:id_album/tracks`
+      `/api/:id_artist/albums/:id_album/tracks`
         .replace(":id_artist", args.id_artist)
-        .replace(":id_album", args.id_album),
-      {
-        params: {
-          apikey: HAPPY_API_KEY
-        }
-      }
+        .replace(":id_album", args.id_album)
     );
     const {
       data: { result }

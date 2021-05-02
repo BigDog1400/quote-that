@@ -8,11 +8,9 @@ const HAPPY_API_KEY = process.env.NEXT_PUBLIC_HAPPI_DEV_API_KEY;
 export const fetchArtists = createAsyncThunk(
   "artists/fetchArtists",
   async (search: string, { getState }) => {
-    const response = await axios.get(`https://api.happi.dev/v1/music`, {
+    const response = await axios.get(`/api/search`, {
       params: {
-        q: search,
-        type: "artist",
-        apikey: HAPPY_API_KEY
+        q: search
       }
     });
     const {

@@ -42,15 +42,10 @@ export const fetchTrack = createAsyncThunk<
   { state: RootState }
 >("artists/fetchTrack", async (arg, { getState }) => {
   const response = await axios.get<FetchTrackResponseType>(
-    `https://api.happi.dev/v1/music/artists/:id_artist/albums/:id_album/tracks/:id_track/lyrics`
+    `/api/:id_artist/albums/:id_album/tracks/:id_track`
       .replace(":id_artist", arg.idArtist)
       .replace(":id_album", arg.idAlbum)
-      .replace(":id_track", arg.idTrack),
-    {
-      params: {
-        apikey: HAPPY_API_KEY
-      }
-    }
+      .replace(":id_track", arg.idTrack)
   );
 
   const {
@@ -64,11 +59,11 @@ export const fetchTrack = createAsyncThunk<
       ...result
     });
   } else {
-    const albumResponse = await axios.get(result.api_album, {
-      params: {
-        apikey: HAPPY_API_KEY
-      }
-    });
+    const albumResponse = await axios.get(
+      `/api/:id_artist/albums/:id_album/`
+        .replace(":id_artist", arg.idArtist)
+        .replace(":id_album", arg.idAlbum)
+    );
 
     return (resultParse = {
       cover: albumResponse.data.result.cover,
