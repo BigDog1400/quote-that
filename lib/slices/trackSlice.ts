@@ -3,7 +3,6 @@ import type { RootState } from "../../store";
 import axios from "axios";
 import { statusType } from "../../types/statusRequestRedux";
 import { resultAlbum } from "./albumSlice";
-const HAPPY_API_KEY = process.env.NEXT_PUBLIC_HAPPI_DEV_API_KEY;
 
 type TrackDataResponse = {
   artist: string;

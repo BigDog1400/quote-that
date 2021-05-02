@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice, Draft } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 import axios from "axios";
 import { statusType } from "../../types/statusRequestRedux";
-const HAPPY_API_KEY = process.env.NEXT_PUBLIC_HAPPI_DEV_API_KEY;
 // First, create the thunk
 
 export const fetchAlbums = createAsyncThunk(

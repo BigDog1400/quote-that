@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-const HAPPY_API_KEY = process.env.NEXT_PUBLIC_HAPPI_DEV_API_KEY;
+const HAPPY_API_KEY = process.env.HAPPI_DEV_API_KEY;
 
 export default async function handler(
   req: NextApiRequest,
