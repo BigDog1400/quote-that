@@ -2,8 +2,25 @@ import { Image } from "@chakra-ui/image";
 import { Box, Heading, HStack, Spacer, Text, VStack } from "@chakra-ui/layout";
 import React, { useEffect, useState } from "react";
 
-function LetterReader({ lyrics, upperText, bottomText }) {
+type LetterReaderProps = {
+  lyrics: string[];
+  upperText: string;
+  bottomText: string;
+  cover: string;
+  artist_name: string;
+  track_name: string;
+};
+
+function LetterReader({
+  lyrics,
+  upperText,
+  bottomText,
+  cover,
+  artist_name,
+  track_name
+}: LetterReaderProps) {
   const [lyricsParsed, setLyricsParsed] = useState([]);
+
   useEffect(() => {
     if (lyrics.length === 1) {
       let content = lyrics;
@@ -18,6 +35,7 @@ function LetterReader({ lyrics, upperText, bottomText }) {
       setLyricsParsed([]);
     }
   }, [lyrics]);
+
   return (
     <VStack height='100%' p={10}>
       <HStack flex='25%' w='40%' alignSelf='flex-start'>
@@ -48,11 +66,11 @@ function LetterReader({ lyrics, upperText, bottomText }) {
               boxSize='200px'
               alt='Artist Cover'
               fallbackSrc='img/mello-face.png'
-              src='https://api.happi.dev/v1/music/cover/4232'
+              src={cover}
             />
           </HStack>
           <Heading textAlign='right' fontSize='3rem' color='black'>
-            xanny - billie eilish
+            {track_name} - {artist_name}
           </Heading>
         </Box>
       </HStack>

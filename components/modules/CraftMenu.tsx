@@ -1,29 +1,48 @@
-import { Box, Text } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
+import { Box, HStack, Text, VStack } from "@chakra-ui/layout";
+import { Spinner } from "@chakra-ui/spinner";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/tabs";
-import { Textarea } from "@chakra-ui/textarea";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useForm } from "../../hooks/useForm";
+import LetterInputFields from "../elements/LetterInputFields";
 import LetterPhraseSelector from "../elements/LetterPhraseSelector";
+
+type CraftMenuProps = {
+  lyrics: string[];
+  onToggleLyricLine: (number) => void;
+  indexesOfLinesSelected: number[];
+  onChangeUpperText: (value: string) => void;
+  onChangeBottomText: (value: string) => void;
+  onSaveLetter: () => void;
+  isSending: boolean;
+  isCompleted: boolean;
+  JSON_id: string;
+};
 
 function CraftMenu({
   lyrics,
   onToggleLyricLine,
   indexesOfLinesSelected,
   onChangeUpperText,
-  onChangeBottomText
-}) {
-  const [bottomText, setBottomText] = useState("");
-  const [upperText, setUpperText] = useState("");
+  onChangeBottomText,
+  onSaveLetter,
+  isSending,
+  isCompleted,
+  JSON_id
+}: CraftMenuProps) {
+  const { formData, handleInputChange } = useForm({
+    bottomText: "",
+    upperText: ""
+  });
 
-  let handleTextChange = (e, setter) => {
-    let inputValue = e.target.value;
-    setter(inputValue);
-  };
+  const { bottomText, upperText } = formData;
+
   useEffect(() => {
-    onChangeUpperText(upperText);
-  }, [upperText]);
+    onChangeUpperText(formData.upperText);
+  }, [formData.upperText]);
   useEffect(() => {
-    onChangeBottomText(bottomText);
-  }, [bottomText]);
+    onChangeBottomText(formData.bottomText);
+  }, [formData.bottomText]);
   return (
     <Tabs
       position='absolute'
@@ -41,6 +60,13 @@ function CraftMenu({
           />
         </TabPanel>
         <TabPanel>
+          <LetterInputFields
+            upperText={upperText}
+            bottomText={bottomText}
+            handleTextChange={handleInputChange}
+          />
+        </TabPanel>
+        <TabPanel>
           <Box
             maxHeight='30vh'
             padding='8'
@@ -48,34 +74,47 @@ function CraftMenu({
             backgroundColor='gray.700'
             width='600px'
           >
-            <Text mb='8px' fontWeight='bold'>
-              Texto Superior
-            </Text>
-            <Textarea
-              resize='none'
-              value={upperText}
-              onChange={(e) => handleTextChange(e, setUpperText)}
-              placeholder='Here is a sample placeholder'
-              size='xl'
-              p={2}
-            />
-            <Text mb='8px' fontWeight='bold'>
-              Texto Inferior
-            </Text>
-            <Textarea
-              resize='none'
-              value={bottomText}
-              onChange={(e) => handleTextChange(e, setBottomText)}
-              placeholder='Here is a sample placeholder'
-              size='xl'
-              p={2}
-            />
+            <VStack>
+              {!isCompleted ? (
+                isSending ? (
+                  <Text mb={4} fontWeight='bold'>
+                    Generando Link... <Spinner />
+                  </Text>
+                ) : (
+                  <>
+                    <Text mb={4} fontWeight='bold'>
+                      Una vez guardes tu carta, no podrás modificarla!
+                    </Text>
+                    <Button onClick={onSaveLetter}>Guardar</Button>{" "}
+                  </>
+                )
+              ) : null}
+              {isCompleted ? (
+                <>
+                  <Text>Este es tu enlace </Text>
+                  <HStack spacing={4}>
+                    <Text>{`${window?.location?.origin}/read/${JSON_id}`}</Text>
+                    <Button
+                      size='sm'
+                      onClick={() =>
+                        navigator.clipboard.writeText(
+                          `${window?.location?.origin}/read/${JSON_id}`
+                        )
+                      }
+                    >
+                      copy
+                    </Button>
+                  </HStack>
+                </>
+              ) : null}
+            </VStack>
           </Box>
         </TabPanel>
       </TabPanels>
       <TabList>
         <Tab borderBottom='none'>Lyric</Tab>
         <Tab borderBottom='none'>Mensaje</Tab>
+        <Tab borderBottom='none'>Guardar</Tab>
       </TabList>
     </Tabs>
   );
