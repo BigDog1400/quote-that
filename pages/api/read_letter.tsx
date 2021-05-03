@@ -1,4 +1,4 @@
-import { API_JSONBIN_CREATE_RECORD_PATH } from "./../../constants";
+import { API_JSONBIN_CREATE_RECORD_PATH } from "../../constants";
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 const API_KEY = process.env.JSONBIN_APIKEY;
