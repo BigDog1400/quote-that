@@ -2,7 +2,8 @@
 
 A [Web App](https://quote-that.vercel.app/) for searching information related to musicians records, such as albums, music list and their lyrics (if availables)
 
-##Technologies
+## Technologies
+
 Project is created with:
 
 - NextJS
@@ -10,7 +11,7 @@ Project is created with:
 - Typescript
 - React-redux
 
-##Learnings
+## Learnings
 
 The main learning purpose of this project was to me get confortable with the use of Typescript. Also it was a good time for testing out Chakra-ui for the first time and playing around with the Redux Starter Kit (aka @reduxjs/toolkit).
 
